@@ -1,10 +1,16 @@
 @extends('layouts.default')
 
 @section('content')
-<div id="app">
-    <example-component>
-        Carregando...
-    </example-component>
+<div class="container">
+    <h3>{{ __('Most recent threads') }}</h3>
+    <thread-component
+        title="{{ __('Threads') }}"
+        thread="{{__('Thread')}}"
+        reply="{{__('Reply')}}"
+        open="{{__('Open')}}"      
+    >
+        @include('layouts.default.preloader')
+    </thread-component>
 </div>
 @endsection
 

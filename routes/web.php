@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('thread.index');
 });
+
+Route::get('/thread/{id}', function ($id) {
+    $result = \App\Thread::findOrFail($id);
+    return view('thread.view', compact('result'));
+});
+
+Route::get('locale/{locale}', function($locale){
+    session(['locale' => $locale]);
+    return back();
+});

@@ -26,7 +26,7 @@ window.Vue = __webpack_require__(4);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(44));
+Vue.component('reply-component', __webpack_require__(44));
 
 var app = new Vue({
   el: '#app'
@@ -59,7 +59,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\replies\\components\\ExampleComponent.vue"
+Component.options.__file = "resources\\assets\\js\\replies\\components\\ReplyComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -68,9 +68,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f9a37654", Component.options)
+    hotAPI.createRecord("data-v-353e7a16", Component.options)
   } else {
-    hotAPI.reload("data-v-f9a37654", Component.options)
+    hotAPI.reload("data-v-353e7a16", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -103,11 +103,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+    props: ['reply', 'replied', 'yourAnswer', 'send']
 });
 
 /***/ }),
@@ -119,38 +147,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
+  return _c("div", [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("span", { staticClass: "card-title" }, [
+          _vm._v("Lucas Carvalho " + _vm._s(_vm.replied))
+        ]),
+        _vm._v(" "),
+        _c("blockquote", [
+          _vm._v(
+            "\n                Eum deleniti velit et exercitationem suscipit sequi. Magnam sit minus eos qui iusto. Suscipit nisi nihil dolor. Sequi ut dolore laboriosam vel. Voluptatem culpa tenetur veritatis sunt est suscipit asperiores. Officiis velit qui voluptas eos consequatur.                    \n            "
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("span", { staticClass: "card-title" }, [
+          _vm._v("Lucas Carvalho " + _vm._s(_vm.replied))
+        ]),
+        _vm._v(" "),
+        _c("blockquote", [
+          _vm._v(
+            "\n                Eum deleniti velit et exercitationem suscipit sequi. Magnam sit minus eos qui iusto. Suscipit nisi nihil dolor. Sequi ut dolore laboriosam vel. Voluptatem culpa tenetur veritatis sunt est suscipit asperiores. Officiis velit qui voluptas eos consequatur.                    \n            "
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("span", { staticClass: "card-title" }, [
+          _vm._v("Lucas Carvalho " + _vm._s(_vm.replied))
+        ]),
+        _vm._v(" "),
+        _c("blockquote", [
+          _vm._v(
+            "\n                Eum deleniti velit et exercitationem suscipit sequi. Magnam sit minus eos qui iusto. Suscipit nisi nihil dolor. Sequi ut dolore laboriosam vel. Voluptatem culpa tenetur veritatis sunt est suscipit asperiores. Officiis velit qui voluptas eos consequatur.                    \n            "
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card grey lighten-4" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("span", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.reply))]),
+        _vm._v(" "),
+        _c("form", [
+          _c("div", { staticClass: "input-field" }, [
+            _c("textarea", {
+              staticClass: "materialize-textarea",
+              attrs: { rows: "10", placeholder: _vm.yourAnswer }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn red accent-2", attrs: { type: "submit" } },
+            [_vm._v(_vm._s(_vm.send))]
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f9a37654", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-353e7a16", module.exports)
   }
 }
 

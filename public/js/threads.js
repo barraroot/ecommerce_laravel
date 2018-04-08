@@ -26,7 +26,7 @@ window.Vue = __webpack_require__(4);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(49));
+Vue.component('thread-component', __webpack_require__(49));
 
 var app = new Vue({
   el: '#app'
@@ -59,7 +59,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\threads\\components\\ExampleComponent.vue"
+Component.options.__file = "resources\\assets\\js\\threads\\components\\ThreadComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -68,9 +68,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-82513912", Component.options)
+    hotAPI.createRecord("data-v-5d47f402", Component.options)
   } else {
-    hotAPI.reload("data-v-82513912", Component.options)
+    hotAPI.reload("data-v-5d47f402", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -213,11 +213,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+    props: ['title', 'thread', 'reply', 'open']
 });
 
 /***/ }),
@@ -229,38 +237,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-content" }, [
+      _c("span", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("table", [
+        _c("thead", [
+          _c("tr", [
+            _c("th", [_vm._v("#")]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
+            _c("th", [_vm._v(_vm._s(_vm.thread))]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.reply))]),
+            _vm._v(" "),
+            _c("th")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v("1")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Topico Test")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("4")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { attrs: { href: "/thread/1" } }, [
+                _vm._v(_vm._s(_vm.open))
+              ])
             ])
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-82513912", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5d47f402", module.exports)
   }
 }
 
