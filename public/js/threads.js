@@ -223,9 +223,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'thread', 'reply', 'open']
+    props: ['title', 'thread', 'reply', 'open', 'newtitle', 'threadtitle', 'threadbody', 'send'],
+    data: function data() {
+        return {
+            thread_response: [],
+            thread_to_save: {
+                title: '',
+                body: ''
+            }
+        };
+    },
+
+    methods: {
+        save: function save() {
+            var _this = this;
+
+            window.axios.post('/threads', this.thread_to_save).then(function (response) {
+                _this.getThreads();
+            });
+        },
+        getThreads: function getThreads() {
+            var _this2 = this;
+
+            window.axios.get('/threads').then(function (response) {
+                _this2.thread_response = response.data;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getThreads();
+    }
 });
 
 /***/ }),
@@ -237,38 +282,117 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-content" }, [
-      _c("span", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
-      _vm._v(" "),
-      _c("table", [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("#")]),
-            _vm._v(" "),
-            _c("th", [_vm._v(_vm._s(_vm.thread))]),
-            _vm._v(" "),
-            _c("th", [_vm._v(_vm._s(_vm.reply))]),
-            _vm._v(" "),
-            _c("th")
-          ])
+  return _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("span", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+        _vm._v(" "),
+        _c("table", [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("#")]),
+              _vm._v(" "),
+              _c("th", [_vm._v(_vm._s(_vm.thread))]),
+              _vm._v(" "),
+              _c("th", [_vm._v(_vm._s(_vm.reply))]),
+              _vm._v(" "),
+              _c("th")
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.thread_response.data, function(thread) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(thread.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(thread.title))]),
+                _vm._v(" "),
+                _c("td", [_vm._v("0")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { attrs: { href: "/thread/" + thread.id } }, [
+                    _vm._v(_vm._s(_vm.open))
+                  ])
+                ])
+              ])
+            })
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("span", { staticClass: "card-title" }, [
+          _vm._v(_vm._s(_vm.newtitle))
         ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("1")]),
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.save()
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "input-field" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.thread_to_save.title,
+                    expression: "thread_to_save.title"
+                  }
+                ],
+                attrs: { type: "text", placeholder: _vm.threadtitle },
+                domProps: { value: _vm.thread_to_save.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.thread_to_save, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
-            _c("td", [_vm._v("Topico Test")]),
+            _c("div", { staticClass: "input-field" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.thread_to_save.body,
+                    expression: "thread_to_save.body"
+                  }
+                ],
+                staticClass: "materialize-textarea",
+                attrs: { placeholder: _vm.threadbody },
+                domProps: { value: _vm.thread_to_save.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.thread_to_save, "body", $event.target.value)
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
-            _c("td", [_vm._v("4")]),
-            _vm._v(" "),
-            _c("td", [
-              _c("a", { attrs: { href: "/thread/1" } }, [
-                _vm._v(_vm._s(_vm.open))
-              ])
-            ])
-          ])
-        ])
+            _c(
+              "button",
+              { staticClass: "btn red accent-2", attrs: { type: "submit" } },
+              [_vm._v(_vm._s(_vm.send))]
+            )
+          ]
+        )
       ])
     ])
   ])
