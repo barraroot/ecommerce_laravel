@@ -1,41 +1,21 @@
 <template>
     <div>
-        <div class="card">
+        <div class="card" v-for="reply in replies">
             <div class="card-content">
-                <span class="card-title">Lucas Carvalho {{replied}}</span>
+                <span class="card-title">{{reply.user.name}} {{replied}}</span>
 
                 <blockquote>
-                    Eum deleniti velit et exercitationem suscipit sequi. Magnam sit minus eos qui iusto. Suscipit nisi nihil dolor. Sequi ut dolore laboriosam vel. Voluptatem culpa tenetur veritatis sunt est suscipit asperiores. Officiis velit qui voluptas eos consequatur.                    
+                    {{reply.body}}
                 </blockquote>
             </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">Lucas Carvalho {{replied}}</span>
-
-                <blockquote>
-                    Eum deleniti velit et exercitationem suscipit sequi. Magnam sit minus eos qui iusto. Suscipit nisi nihil dolor. Sequi ut dolore laboriosam vel. Voluptatem culpa tenetur veritatis sunt est suscipit asperiores. Officiis velit qui voluptas eos consequatur.                    
-                </blockquote>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">Lucas Carvalho {{replied}}</span>
-
-                <blockquote>
-                    Eum deleniti velit et exercitationem suscipit sequi. Magnam sit minus eos qui iusto. Suscipit nisi nihil dolor. Sequi ut dolore laboriosam vel. Voluptatem culpa tenetur veritatis sunt est suscipit asperiores. Officiis velit qui voluptas eos consequatur.                    
-                </blockquote>
-            </div>
-        </div>        
+        </div>    
 
         <div class="card grey lighten-4">
             <div class="card-content">
                 <span class="card-title">{{reply}}</span>
-                <form>
+                <form @submit.prevent="save()">
                     <div class="input-field">
-                        <textarea rows="10" class="materialize-textarea" :placeholder="yourAnswer"></textarea>
+                        <textarea rows="10" class="materialize-textarea" :placeholder="yourAnswer" v-model="reply_to_save.body"></textarea>
                     </div>
                     <button type="submit" class="btn red accent-2">{{send}}</button>
                 </form>
@@ -50,7 +30,38 @@
             'reply',
             'replied',
             'yourAnswer',
-            'send'
-        ]
+            'send',
+            'threadId'
+        ],
+        data() {
+            return {
+                replies: [],
+                thread_id: this.threadId,
+                reply_to_save: {
+                    body: '',
+                    thread_id: this.threadId
+                }
+            }
+        },
+         methods: {
+             getReplies() {
+                 window.axios.get('/replies/'+ this.thread_id).then((response) => {
+                     this.replies = response.data;
+                 })
+             },
+             save() {
+                 window.axios.post('/replies/', this.reply_to_save  ).then((response) => {
+                     this.getReplies();
+                     this.reply_to_save = {
+                        body: '',
+                        thread_id: this.threadId                         
+                     }
+                 })
+                 .catch((err) => console.log('erro' + err.message))
+             }
+         },
+         mounted() {
+             this.getReplies();
+         }
     }
 </script>

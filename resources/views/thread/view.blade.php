@@ -18,7 +18,8 @@
         reply="{{__('Reply')}}"
         replied="{{__('Replied')}}"
         your-answer="{{__('Your Answer')}}"
-        send="{{__('Send')}}">
+        send="{{__('Send')}}"
+        thread-id="{{ $result->id }}">
         @include('layouts.default.preloader')
     </reply-component>
 </div>
